@@ -1,0 +1,21 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+rpm
+rpm-extras
+curl
+curl-bin
+ca-certs
+xmlstarlet
+openssl-dev
+findutils
+mlocate
+p11-kit
+bash
+cpio-bin
+curl-lib
+curl-dev
+openssl-lib
+zlib-dev
+pcre-dev
+pcre-extras
+buildreq-cmake

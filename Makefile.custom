@@ -1,0 +1,10 @@
+# $(eval export SETVERSION:=$(shell curl --location --silent "http://yum.insync.io" | xml sel -t -m '/_:ListBucketResult/_:Contents[_:Key[contains(text(),"fedora/31/x86_64")]]/_:LastModified' -s D:T:- "text()" -v "parent::node()/_:Key" -n | head -1 | grep -oP "(?<=insync\-)\d+[\.\d+]+(?=\-fc30)"))
+
+preautospec-checks:
+	$(eval export SETVERSION:=$(shell curl -L --silent 'https://www.insynchq.com/downloads' | grep -oP "(?<=\"linux\":\s\")(\d+)(\.\d+)+"))
+
+preautospecnew-checks:
+	$(eval export SETVERSION:=$(shell curl -L --silent 'https://www.insynchq.com/downloads' | grep -oP "(?<=\"linux\":\s\")(\d+)(\.\d+)+"))
+
+prebuild-checks:
+	$(eval export SETVERSION:=$(shell curl -L --silent 'https://www.insynchq.com/downloads' | grep -oP "(?<=\"linux\":\s\")(\d+)(\.\d+)+"))
