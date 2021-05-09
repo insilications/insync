@@ -123,7 +123,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620566468
+export SOURCE_DATE_EPOCH=1620585267
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -139,7 +139,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620566468
+export SOURCE_DATE_EPOCH=1620585267
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -941,7 +941,6 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/libpixman-1.so.0
 /usr/lib64/insync/libplc4.so
 /usr/lib64/insync/libplds4.so
-/usr/lib64/insync/libpng16.so.16
 /usr/lib64/insync/libpyside2.abi3.so.5.12
 /usr/lib64/insync/libpython3.7m.so.1.0
 /usr/lib64/insync/libreadline.so.8
@@ -953,7 +952,6 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/libstdc++.so.6
 /usr/lib64/insync/libsystemd.so.0
 /usr/lib64/insync/libtasn1.so.6
-/usr/lib64/insync/libtinfo.so.6
 /usr/lib64/insync/libunistring.so.2
 /usr/lib64/insync/libwayland-client.so.0
 /usr/lib64/insync/libwayland-cursor.so.0
