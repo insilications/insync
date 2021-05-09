@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : insync
 Version  : 3.3.9.40955
-Release  : 36
+Release  : 37
 URL      : https://github.com/insilications/insync-clr/archive/master.zip
 Source0  : https://github.com/insilications/insync-clr/archive/master.zip
 Summary  : No detailed summary available
@@ -37,6 +37,8 @@ BuildRequires : zlib-dev
 # Suppress stripping binaries
 %define __strip /bin/true
 %define debug_package %{nil}
+# Ignore missing build ids
+%undefine _missing_build_ids_terminate_build
 # Disable automatic requeriments processing
 AutoReq: no
 
@@ -121,7 +123,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620512420
+export SOURCE_DATE_EPOCH=1620566468
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -137,11 +139,13 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620512420
+export SOURCE_DATE_EPOCH=1620566468
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
 popd
+## Remove excluded files
+rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/Makefile
 
 %files
 %defattr(-,root,root,-)
@@ -776,7 +780,6 @@ popd
 /usr/lib64/insync/_bisect.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/_blake2.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/_bz2.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/_cffi_backend.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/_codecs_iso2022.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/_contextvars.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/_ctypes.cpython-37m-x86_64-linux-gnu.so
@@ -806,7 +809,6 @@ popd
 /usr/lib64/insync/_ssl.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/_struct.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/_struct/cpython-37m-x86_64-linux-gnu/sotruct.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/_uuid.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/array.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/base_library.zip
 /usr/lib64/insync/binascii.cpython-37m-x86_64-linux-gnu.so
@@ -839,13 +841,8 @@ popd
 /usr/lib64/insync/ideskui/build/static/media/Lato-Light.bd895b1e.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Regular.79164ee5.ttf
 /usr/lib64/insync/ideskui/build/static/media/od-avatar.e64639c8.png
-/usr/lib64/insync/include/python3.7m/pyconfig-64.h
+/usr/lib64/insync/include/python3.7m/pyconfig.h
 /usr/lib64/insync/insync
-/usr/lib64/insync/lib2to3/Grammar.txt
-/usr/lib64/insync/lib2to3/Grammar3.7.3.final.0.pickle
-/usr/lib64/insync/lib2to3/PatternGrammar.txt
-/usr/lib64/insync/lib2to3/PatternGrammar3.7.3.final.0.pickle
-/usr/lib64/insync/lib64/python3.7/config-3.7m-x86_64-linux-gnu/Makefile
 /usr/lib64/insync/libQt5Core.so.5
 /usr/lib64/insync/libQt5DBus.so.5
 /usr/lib64/insync/libQt5EglFSDeviceIntegration.so.5
@@ -885,6 +882,8 @@ popd
 /usr/lib64/insync/libavahi-client.so.3
 /usr/lib64/insync/libavahi-common.so.3
 /usr/lib64/insync/libblkid.so.1
+/usr/lib64/insync/libbrotlicommon.so.1
+/usr/lib64/insync/libbrotlidec.so.1
 /usr/lib64/insync/libbz2.so.1
 /usr/lib64/insync/libcairo-gobject.so.2
 /usr/lib64/insync/libcairo.so.2
@@ -917,7 +916,7 @@ popd
 /usr/lib64/insync/libgthread-2.0.so.0
 /usr/lib64/insync/libgtk-3.so.0
 /usr/lib64/insync/libharfbuzz.so.0
-/usr/lib64/insync/libhogweed.so.4
+/usr/lib64/insync/libhogweed.so.6
 /usr/lib64/insync/libicudata.so.56
 /usr/lib64/insync/libicui18n.so.56
 /usr/lib64/insync/libicuuc.so.56
@@ -930,7 +929,7 @@ popd
 /usr/lib64/insync/liblzma.so.5
 /usr/lib64/insync/libmount.so.1
 /usr/lib64/insync/libncursesw.so.6
-/usr/lib64/insync/libnettle.so.6
+/usr/lib64/insync/libnettle.so.8
 /usr/lib64/insync/libnspr4.so
 /usr/lib64/insync/libp11-kit.so.0
 /usr/lib64/insync/libpanelw.so.6
@@ -956,15 +955,15 @@ popd
 /usr/lib64/insync/libtasn1.so.6
 /usr/lib64/insync/libtinfo.so.6
 /usr/lib64/insync/libunistring.so.2
-/usr/lib64/insync/libuuid.so.1
 /usr/lib64/insync/libwayland-client.so.0
 /usr/lib64/insync/libwayland-cursor.so.0
 /usr/lib64/insync/libwayland-egl.so.1
 /usr/lib64/insync/libxcb-render.so.0
 /usr/lib64/insync/libxcb-shm.so.0
 /usr/lib64/insync/libxcb-xfixes.so.0
-/usr/lib64/insync/libxkbcommon.so.0
+/usr/lib64/insync/libxml2.so.2
 /usr/lib64/insync/libz.so.1
+/usr/lib64/insync/libzstd.so.1
 /usr/lib64/insync/math.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/mmap.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/psutil/_psutil_linux.cpython-37m-x86_64-linux-gnu.so
@@ -975,7 +974,6 @@ popd
 /usr/lib64/insync/resource.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/select.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/shiboken2/shiboken2.abi3.so
-/usr/lib64/insync/syslog.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/termios.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/unicodedata.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/zlib.cpython-37m-x86_64-linux-gnu.so
