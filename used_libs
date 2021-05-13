@@ -10,11 +10,14 @@ libdrm.so.2
 libm.so.6
 libnss3.so
 libnssutil3.so
+libpng16.so.16
 libpthread.so.0
 libresolv.so.2
 librt.so.1
 libthai.so.0
+libtinfo.so.6
 libutil.so.1
 libwayland-server.so.0
 libxcb.so.1
 libxkbcommon-x11.so.0
+libxkbcommon.so.0
