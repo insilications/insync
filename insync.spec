@@ -4,8 +4,8 @@
 #
 %define keepstatic 1
 Name     : insync
-Version  : 3.3.9.40955
-Release  : 37
+Version  : 3.3.10.40961
+Release  : 38
 URL      : https://github.com/insilications/insync-clr/archive/master.zip
 Source0  : https://github.com/insilications/insync-clr/archive/master.zip
 Summary  : No detailed summary available
@@ -123,7 +123,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1620878155
+export SOURCE_DATE_EPOCH=1621249425
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -139,7 +139,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1620878155
+export SOURCE_DATE_EPOCH=1621249425
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -830,12 +830,12 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/ideskui/build/static/js/5.482ab2c0.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/5.482ab2c0.chunk.js.LICENSE.txt
 /usr/lib64/insync/ideskui/build/static/js/5.482ab2c0.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/6.1b25caeb.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/6.1b25caeb.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/6.bd485a53.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/6.bd485a53.chunk.js.map
 /usr/lib64/insync/ideskui/build/static/js/main.aa4312fd.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/main.aa4312fd.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.7bf93f66.js
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.7bf93f66.js.map
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.a98ca15d.js
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.a98ca15d.js.map
 /usr/lib64/insync/ideskui/build/static/media/Lato-Black.e5c10b5f.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Bold.401bd636.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Light.bd895b1e.ttf
@@ -921,6 +921,7 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/libicui18n.so.56
 /usr/lib64/insync/libicuuc.so.56
 /usr/lib64/insync/libidn2.so.0
+/usr/lib64/insync/libjpeg.so.62
 /usr/lib64/insync/libk5crypto.so.3
 /usr/lib64/insync/libkeyutils.so.1
 /usr/lib64/insync/libkrb5.so.3
@@ -1000,4 +1001,5 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/share/man/man1/insync-quit.1.gz
 /usr/share/man/man1/insync-show.1.gz
 /usr/share/man/man1/insync-start.1.gz
+/usr/share/man/man1/insync-version.1.gz
 /usr/share/man/man1/insync.1.gz
