@@ -4,8 +4,8 @@
 #
 %define keepstatic 1
 Name     : insync
-Version  : 3.3.10.40961
-Release  : 40
+Version  : 3.4.0.40973
+Release  : 41
 URL      : https://github.com/insilications/insync-clr/archive/master.zip
 Source0  : https://github.com/insilications/insync-clr/archive/master.zip
 Summary  : No detailed summary available
@@ -123,7 +123,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1621959464
+export SOURCE_DATE_EPOCH=1622053672
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -135,11 +135,11 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=16 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=16 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=16 "
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1621959464
+export SOURCE_DATE_EPOCH=1622053672
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -267,6 +267,12 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/share/icons/hicolor/72x72/places/insync-folder.png
 /usr/share/icons/hicolor/96x96/places/insync-folder.png
 /usr/share/icons/hicolor/scalable/apps/insync.svg
+/usr/share/icons/hicolor/scalable/status/insync-alert.svg
+/usr/share/icons/hicolor/scalable/status/insync-normal.svg
+/usr/share/icons/hicolor/scalable/status/insync-offline.svg
+/usr/share/icons/hicolor/scalable/status/insync-paused.svg
+/usr/share/icons/hicolor/scalable/status/insync-synced.svg
+/usr/share/icons/hicolor/scalable/status/insync-syncing.svg
 /usr/share/mime-packages/insync-helper.xml
 
 %files dev
@@ -400,6 +406,7 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/PySide2/Qt/resources/qtwebengine_resources.pak
 /usr/lib64/insync/PySide2/Qt/resources/qtwebengine_resources_100p.pak
 /usr/lib64/insync/PySide2/Qt/resources/qtwebengine_resources_200p.pak
+/usr/lib64/insync/PySide2/Qt/translations/
 /usr/lib64/insync/PySide2/Qt/translations/assistant_ar.qm
 /usr/lib64/insync/PySide2/Qt/translations/assistant_bg.qm
 /usr/lib64/insync/PySide2/Qt/translations/assistant_cs.qm
@@ -819,8 +826,8 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/ideskui/build/index.html
 /usr/lib64/insync/ideskui/build/static/css/main.d1c363b2.chunk.css
 /usr/lib64/insync/ideskui/build/static/css/main.d1c363b2.chunk.css.map
-/usr/lib64/insync/ideskui/build/static/js/0.0a94a62c.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/0.0a94a62c.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/0.b48d1fd0.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/0.b48d1fd0.chunk.js.map
 /usr/lib64/insync/ideskui/build/static/js/1.a452924e.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/1.a452924e.chunk.js.LICENSE.txt
 /usr/lib64/insync/ideskui/build/static/js/1.a452924e.chunk.js.map
@@ -830,12 +837,12 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/ideskui/build/static/js/5.482ab2c0.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/5.482ab2c0.chunk.js.LICENSE.txt
 /usr/lib64/insync/ideskui/build/static/js/5.482ab2c0.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/6.bd485a53.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/6.bd485a53.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/6.80ebd8f6.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/6.80ebd8f6.chunk.js.map
 /usr/lib64/insync/ideskui/build/static/js/main.aa4312fd.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/main.aa4312fd.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.a98ca15d.js
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.a98ca15d.js.map
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.a0630041.js
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.a0630041.js.map
 /usr/lib64/insync/ideskui/build/static/media/Lato-Black.e5c10b5f.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Bold.401bd636.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Light.bd895b1e.ttf
