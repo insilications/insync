@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : insync
 Version  : 3.4.0.40973
-Release  : 41
+Release  : 42
 URL      : https://github.com/insilications/insync-clr/archive/master.zip
 Source0  : https://github.com/insilications/insync-clr/archive/master.zip
 Summary  : No detailed summary available
@@ -123,7 +123,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1622053672
+export SOURCE_DATE_EPOCH=1622997478
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -139,7 +139,7 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1622053672
+export SOURCE_DATE_EPOCH=1622997478
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
