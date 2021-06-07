@@ -4,8 +4,8 @@
 #
 %define keepstatic 1
 Name     : insync
-Version  : 3.4.0.40973
-Release  : 42
+Version  : 3.4.1.40977
+Release  : 43
 URL      : https://github.com/insilications/insync-clr/archive/master.zip
 Source0  : https://github.com/insilications/insync-clr/archive/master.zip
 Summary  : No detailed summary available
@@ -123,7 +123,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1622997478
+export SOURCE_DATE_EPOCH=1623095294
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -139,7 +139,7 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1622997478
+export SOURCE_DATE_EPOCH=1623095294
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -837,12 +837,12 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/ideskui/build/static/js/5.482ab2c0.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/5.482ab2c0.chunk.js.LICENSE.txt
 /usr/lib64/insync/ideskui/build/static/js/5.482ab2c0.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/6.80ebd8f6.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/6.80ebd8f6.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/main.aa4312fd.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/main.aa4312fd.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.a0630041.js
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.a0630041.js.map
+/usr/lib64/insync/ideskui/build/static/js/6.59901ab6.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/6.59901ab6.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/main.4826c087.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/main.4826c087.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.cae0f274.js
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.cae0f274.js.map
 /usr/lib64/insync/ideskui/build/static/media/Lato-Black.e5c10b5f.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Bold.401bd636.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Light.bd895b1e.ttf
