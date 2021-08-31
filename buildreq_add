@@ -1,0 +1,22 @@
+# This file contains additional build requirements that did not get
+# picked up automatically. One name per line, no whitespace.
+bash
+buildreq-cmake
+ca-certs
+cpio-bin
+curl
+curl-bin
+curl-dev
+curl-lib
+fastnumbers
+findutils
+mlocate
+natsort
+openssl-dev
+openssl-lib
+p11-kit
+pcre-dev
+pcre-extras
+requests
+xmlstarlet
+zlib-dev
