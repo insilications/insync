@@ -1,56 +1,60 @@
 #sd 'LC_TIME=C' 'LC_TIME=C QT_QPA_PLATFORM=xcb QTWEBENGINE_CHROMIUM_FLAGS="--no-sandbox"' 'insync';
 
-download-it:
-	-@if ! compgen -G "insync-*.tar.gz" > /dev/null; then \
-		output="$(shell python get_url.py)"; \
-		read -a output_array <<< "$$output"; \
-		DOWNLOADURL="$${output_array[0]}"; \
-		VERSION="$${output_array[1]}"; \
-		export VERSION; \
-		echo -e "\e[32m\xE2\x9C\x93 latest version is: \e[33m$$VERSION\e[m"; \
-		echo -e "\e[32m\xE2\x9C\x93 download URL is: \e[33m$$DOWNLOADURL\e[m"; \
-		curl -L -C - -O "$$DOWNLOADURL"; \
-		if compgen -G "insync-*.rpm" > /dev/null; then \
-			rpm2cpio insync-*.rpm | cpio -ivdm --directory="$$PWD";\
-			pushd "$$PWD/usr/lib/insync/"; \
-			rm libX11*; \
-			rm libxkbcommon.so*; \
-			rm libtinfo.so*; \
-			rm libpng16.so*; \
-			rm lib{drm,GLX,GLdispatch}.so*; \
-			rm libgdk_pixbuf-2.0.so*; \
-			rm libxkbcommon.so*; \
-			rm libxcb*; \
-			popd; \
-			pushd "$$PWD/usr/bin/"; \
-			sd '/usr/lib/insync/insync' '/usr/lib64/insync/insync' 'insync'; \
-			sd '"\$$@"' '"$$@" --ca-path /var/cache/ca-certs/anchors/ --qt-qpa-platform xcb' 'insync'; \
-			sd 'LC_TIME=C' 'LC_TIME=C QT_QPA_PLATFORM=xcb' 'insync'; \
-			popd; \
-			rm CMakeLists.txt; \
-			rm insync-*.tar.gz; \
-			curl --location https://raw.githubusercontent.com/insilications/insync-clr/master/CMakeLists.txt -o CMakeLists.txt; \
-			tar --create --add-file=CMakeLists.txt --file=- usr/ | pigz -9 -p 16 > "insync-v$$VERSION.tar.gz"; \
-			rm CMakeLists.txt; \
-			rm -rf usr/; \
-			rm insync-*.rpm; \
-			echo "file://$$PWD/insync-v$$VERSION.tar.gz" > '/tmp/Makefile_custom.temp'; \
-		else \
-			echo -e "\e[31m\xe2\x9d\x8c Cannot download or find insync-<VERSION>-fc34.x86_64.rpm under current directory\e[m"; \
-			exit 1; \
-		fi \
-	fi
+# download-it:
+# 	-@if ! compgen -G "insync-*.tar.gz" > /dev/null; then \
+# 		output="$(shell python get_url.py)"; \
+# 		read -a output_array <<< "$$output"; \
+# 		DOWNLOADURL="$${output_array[0]}"; \
+# 		VERSION="$${output_array[1]}"; \
+# 		export VERSION; \
+# 		echo -e "\e[32m\xE2\x9C\x93 latest version is: \e[33m$$VERSION\e[m"; \
+# 		echo -e "\e[32m\xE2\x9C\x93 download URL is: \e[33m$$DOWNLOADURL\e[m"; \
+# 		curl -L -C - -O "$$DOWNLOADURL"; \
+# 		if compgen -G "insync-*.rpm" > /dev/null; then \
+# 			rpm2cpio insync-*.rpm | cpio -ivdm --directory="$$PWD";\
+# 			pushd "$$PWD/usr/lib/insync/"; \
+# 			rm libX11*; \
+# 			rm libxkbcommon.so*; \
+# 			rm libtinfo.so*; \
+# 			rm libpng16.so*; \
+# 			rm lib{drm,GLX,GLdispatch}.so*; \
+# 			rm libgdk_pixbuf-2.0.so*; \
+# 			rm libxkbcommon.so*; \
+# 			rm libxcb*; \
+# 			popd; \
+# 			pushd "$$PWD/usr/bin/"; \
+# 			sd '/usr/lib/insync/insync' '/usr/lib64/insync/insync' 'insync'; \
+# 			sd '"\$$@"' '"$$@" --ca-path /var/cache/ca-certs/anchors/ --qt-qpa-platform xcb' 'insync'; \
+# 			sd 'LC_TIME=C' 'LC_TIME=C QT_QPA_PLATFORM=xcb' 'insync'; \
+# 			popd; \
+# 			rm CMakeLists.txt; \
+# 			rm insync-*.tar.gz; \
+# 			curl --location https://raw.githubusercontent.com/insilications/insync-clr/master/CMakeLists.txt -o CMakeLists.txt; \
+# 			tar --create --add-file=CMakeLists.txt --file=- usr/ | pigz -9 -p 16 > "insync-v$$VERSION.tar.gz"; \
+# 			rm CMakeLists.txt; \
+# 			rm -rf usr/; \
+# 			rm insync-*.rpm; \
+# 			echo "file://$$PWD/insync-v$$VERSION.tar.gz" > '/tmp/Makefile_custom.temp'; \
+# 		else \
+# 			echo -e "\e[31m\xe2\x9d\x8c Cannot download or find insync-<VERSION>-fc34.x86_64.rpm under current directory\e[m"; \
+# 			exit 1; \
+# 		fi \
+# 	fi
 
-preautospec-checks: download-it
-	$(eval export NEWURL:=$(shell cat '/tmp/Makefile_custom.temp'))
-	-@rm CMakeLists.txt;
-	-@rm -rf usr/;
-	-@rm insync-*.rpm;
+preautospec-checks:
+	$(eval export NEWURL:=$(shell python get_url.py))
+	@-rm CMakeLists.txt
+	@-rm -rf usr/
+	@-rm insync-*.rpm
 
 preautospecnew-checks: download-it
-	$(eval export NEWURL:=$(shell cat '/tmp/Makefile_custom.temp'))
-	-@rm /tmp/Makefile_custom.temp
+	$(eval export NEWURL:=$(shell python get_url.py))
+	@-rm CMakeLists.txt
+	@-rm -rf usr/
+	@-rm insync-*.rpm
 
 prebuild-checks: download-it
-	$(eval export NEWURL:=$(shell cat '/tmp/Makefile_custom.temp'))
-	-@rm /tmp/Makefile_custom.temp
+	$(eval export NEWURL:=$(shell python get_url.py))
+	@-rm CMakeLists.txt
+	@-rm -rf usr/
+	@-rm insync-*.rpm

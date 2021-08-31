@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : insync
-Version  : 3.5.1
-Release  : 53
-URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.5.1.tar.gz
-Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.5.1.tar.gz
+Version  : 3.5.2
+Release  : 55
+URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.5.2.tar.gz
+Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.5.2.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0 LGPL-2.1
@@ -115,8 +115,8 @@ man components for the insync package.
 
 
 %prep
-%setup -q -c -n insync-v3.5.1.tar
-cd %{_builddir}/insync-v3.5.1.tar
+%setup -q -c -n insync-v3.5.2.tar
+cd %{_builddir}/insync-v3.5.2.tar
 
 %build
 unset http_proxy
@@ -124,7 +124,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1629775472
+export SOURCE_DATE_EPOCH=1630396475
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -140,7 +140,7 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1629775472
+export SOURCE_DATE_EPOCH=1630396475
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -323,7 +323,7 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 
 %files dev
 %defattr(-,root,root,-)
-/usr/lib64/.build-id/24/675b0091f38f45c5c1c5484cf24925b439b164
+/usr/lib64/.build-id/28/ba79c778f7402713aec6af319ee0fbaf3a8014
 /usr/lib64/insync/Crypto/Cipher/AES.pyi
 /usr/lib64/insync/Crypto/Cipher/ARC2.pyi
 /usr/lib64/insync/Crypto/Cipher/ARC4.pyi
@@ -452,6 +452,110 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/PySide2/Qt/resources/qtwebengine_resources.pak
 /usr/lib64/insync/PySide2/Qt/resources/qtwebengine_resources_100p.pak
 /usr/lib64/insync/PySide2/Qt/resources/qtwebengine_resources_200p.pak
+/usr/lib64/insync/PySide2/Qt/translations/assistant_ar.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_bg.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_cs.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_da.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_fr.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_hu.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_ja.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_sk.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_sl.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_zh_CN.qm
+/usr/lib64/insync/PySide2/Qt/translations/assistant_zh_TW.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_ar.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_bg.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_cs.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_da.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_fr.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_hu.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_ja.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_sk.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_sl.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_zh_CN.qm
+/usr/lib64/insync/PySide2/Qt/translations/designer_zh_TW.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_ar.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_bg.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_cs.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_da.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_fr.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_hu.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_it.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_ja.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_sk.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_sl.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_zh_CN.qm
+/usr/lib64/insync/PySide2/Qt/translations/linguist_zh_TW.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_ar.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_bg.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_ca.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_cs.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_da.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_fa.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_fi.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_fr.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_gd.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_gl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_he.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_ar.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_bg.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_cs.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_da.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_fr.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_gl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_hu.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_it.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_ja.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_sk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_sl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_zh_CN.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_help_zh_TW.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_hu.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_it.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_ja.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_lt.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_lv.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_pt.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_sk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_sl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_sv.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_zh_CN.qm
+/usr/lib64/insync/PySide2/Qt/translations/qt_zh_TW.qm
 /usr/lib64/insync/PySide2/Qt/translations/qtbase_ar.qm
 /usr/lib64/insync/PySide2/Qt/translations/qtbase_bg.qm
 /usr/lib64/insync/PySide2/Qt/translations/qtbase_ca.qm
@@ -474,6 +578,16 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/PySide2/Qt/translations/qtbase_sk.qm
 /usr/lib64/insync/PySide2/Qt/translations/qtbase_uk.qm
 /usr/lib64/insync/PySide2/Qt/translations/qtbase_zh_TW.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtconnectivity_bg.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtconnectivity_da.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtconnectivity_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtconnectivity_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtconnectivity_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtconnectivity_hu.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtconnectivity_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtconnectivity_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtconnectivity_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtconnectivity_uk.qm
 /usr/lib64/insync/PySide2/Qt/translations/qtdeclarative_bg.qm
 /usr/lib64/insync/PySide2/Qt/translations/qtdeclarative_da.qm
 /usr/lib64/insync/PySide2/Qt/translations/qtdeclarative_de.qm
@@ -489,6 +603,89 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/PySide2/Qt/translations/qtdeclarative_ru.qm
 /usr/lib64/insync/PySide2/Qt/translations/qtdeclarative_sk.qm
 /usr/lib64/insync/PySide2/Qt/translations/qtdeclarative_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtlocation_bg.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtlocation_da.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtlocation_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtlocation_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtlocation_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtlocation_fi.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtlocation_fr.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtlocation_hu.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtlocation_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtlocation_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtlocation_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtlocation_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_ar.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_bg.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_ca.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_cs.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_da.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_fi.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_fr.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_hu.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_it.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_ja.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_sk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtmultimedia_zh_TW.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols2_ar.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols2_bg.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols2_ca.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols2_da.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols2_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols2_hu.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols2_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols2_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols2_zh_TW.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols_bg.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols_ca.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols_da.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols_fi.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols_fr.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols_ja.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtquickcontrols_zh_TW.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_ar.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_bg.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_ca.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_cs.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_da.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_fi.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_fr.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_he.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_hu.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_it.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_ja.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_lv.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_sk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtscript_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtserialport_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtserialport_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtserialport_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtserialport_ja.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtserialport_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtserialport_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtserialport_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtserialport_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebengine_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebengine_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebengine_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebengine_ko.qm
 /usr/lib64/insync/PySide2/Qt/translations/qtwebengine_locales/am.pak
 /usr/lib64/insync/PySide2/Qt/translations/qtwebengine_locales/ar.pak
 /usr/lib64/insync/PySide2/Qt/translations/qtwebengine_locales/bg.pak
@@ -542,14 +739,40 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/PySide2/Qt/translations/qtwebengine_locales/vi.pak
 /usr/lib64/insync/PySide2/Qt/translations/qtwebengine_locales/zh-CN.pak
 /usr/lib64/insync/PySide2/Qt/translations/qtwebengine_locales/zh-TW.pak
+/usr/lib64/insync/PySide2/Qt/translations/qtwebengine_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebengine_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebengine_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebsockets_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebsockets_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebsockets_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebsockets_fr.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebsockets_ja.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebsockets_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebsockets_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebsockets_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtwebsockets_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_bg.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_ca.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_cs.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_da.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_de.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_en.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_es.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_fr.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_hu.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_it.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_ja.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_ko.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_pl.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_ru.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_sk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_uk.qm
+/usr/lib64/insync/PySide2/Qt/translations/qtxmlpatterns_zh_TW.qm
 /usr/lib64/insync/PySide2/QtCore.abi3.so
 /usr/lib64/insync/PySide2/QtGui.abi3.so
 /usr/lib64/insync/PySide2/QtNetwork.abi3.so
-/usr/lib64/insync/PySide2/QtPositioning.abi3.so
 /usr/lib64/insync/PySide2/QtPrintSupport.abi3.so
 /usr/lib64/insync/PySide2/QtQml.abi3.so
-/usr/lib64/insync/PySide2/QtQuick.abi3.so
-/usr/lib64/insync/PySide2/QtQuickWidgets.abi3.so
 /usr/lib64/insync/PySide2/QtWebChannel.abi3.so
 /usr/lib64/insync/PySide2/QtWebEngineCore.abi3.so
 /usr/lib64/insync/PySide2/QtWebEngineWidgets.abi3.so
@@ -557,9 +780,6 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/PySide2/plugins/bearer/libqconnmanbearer.so
 /usr/lib64/insync/PySide2/plugins/bearer/libqgenericbearer.so
 /usr/lib64/insync/PySide2/plugins/bearer/libqnmbearer.so
-/usr/lib64/insync/PySide2/plugins/egldeviceintegrations/libqeglfs-emu-integration.so
-/usr/lib64/insync/PySide2/plugins/egldeviceintegrations/libqeglfs-kms-egldevice-integration.so
-/usr/lib64/insync/PySide2/plugins/egldeviceintegrations/libqeglfs-x11-integration.so
 /usr/lib64/insync/PySide2/plugins/iconengines/libqsvgicon.so
 /usr/lib64/insync/PySide2/plugins/imageformats/libqgif.so
 /usr/lib64/insync/PySide2/plugins/imageformats/libqicns.so
@@ -587,22 +807,7 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/PySide2/plugins/platforms/libqxcb.so
 /usr/lib64/insync/PySide2/plugins/platformthemes/libqgtk3.so
 /usr/lib64/insync/PySide2/plugins/platformthemes/libqxdgdesktopportal.so
-/usr/lib64/insync/PySide2/plugins/position/libqtposition_geoclue.so
-/usr/lib64/insync/PySide2/plugins/position/libqtposition_geoclue2.so
-/usr/lib64/insync/PySide2/plugins/position/libqtposition_positionpoll.so
-/usr/lib64/insync/PySide2/plugins/position/libqtposition_serialnmea.so
 /usr/lib64/insync/PySide2/plugins/printsupport/libcupsprintersupport.so
-/usr/lib64/insync/PySide2/plugins/qmltooling/libqmldbg_debugger.so
-/usr/lib64/insync/PySide2/plugins/qmltooling/libqmldbg_inspector.so
-/usr/lib64/insync/PySide2/plugins/qmltooling/libqmldbg_local.so
-/usr/lib64/insync/PySide2/plugins/qmltooling/libqmldbg_messages.so
-/usr/lib64/insync/PySide2/plugins/qmltooling/libqmldbg_native.so
-/usr/lib64/insync/PySide2/plugins/qmltooling/libqmldbg_nativedebugger.so
-/usr/lib64/insync/PySide2/plugins/qmltooling/libqmldbg_preview.so
-/usr/lib64/insync/PySide2/plugins/qmltooling/libqmldbg_profiler.so
-/usr/lib64/insync/PySide2/plugins/qmltooling/libqmldbg_quickprofiler.so
-/usr/lib64/insync/PySide2/plugins/qmltooling/libqmldbg_server.so
-/usr/lib64/insync/PySide2/plugins/qmltooling/libqmldbg_tcp.so
 /usr/lib64/insync/PySide2/plugins/wayland-decoration-client/libbradient.so
 /usr/lib64/insync/PySide2/plugins/wayland-graphics-integration-client/libdmabuf-server.so
 /usr/lib64/insync/PySide2/plugins/wayland-graphics-integration-client/libdrm-egl-server.so
@@ -622,11 +827,46 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/PySide2/plugins/wayland-shell-integration/libxdg-shell-v5.so
 /usr/lib64/insync/PySide2/plugins/wayland-shell-integration/libxdg-shell-v6.so
 /usr/lib64/insync/PySide2/plugins/wayland-shell-integration/libxdg-shell.so
-/usr/lib64/insync/PySide2/plugins/xcbglintegrations/libqxcb-egl-integration.so
-/usr/lib64/insync/PySide2/plugins/xcbglintegrations/libqxcb-glx-integration.so
+/usr/lib64/insync/PySide2/translations/qtbase_en.qm
+/usr/lib64/insync/_asyncio.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_bisect.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_blake2.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_bz2.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_codecs_iso2022.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_contextvars.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_ctypes.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_curses.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_curses_panel.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_datetime.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_decimal.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_elementtree.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_hashlib.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_heapq.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_json.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_lzma.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_md5.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_multibytecodec.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_multiprocessing.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_opcode.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_pickle.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_posixsubprocess.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_queue.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_random.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_sha1.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_sha256.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_sha3.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_sha512.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_socket.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_sqlite3.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_ssl.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/_struct.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/_struct/cpython-37m-x86_64-linux-gnu/sotruct.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/array.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/base_library.zip
+/usr/lib64/insync/binascii.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/fcntl.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/gi/_gi.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/grp.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/ideskui/build/asset-manifest.json
 /usr/lib64/insync/ideskui/build/index.html
 /usr/lib64/insync/ideskui/build/static/css/main.d1c363b2.chunk.css
@@ -642,73 +882,22 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/ideskui/build/static/js/5.d90a46dc.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/5.d90a46dc.chunk.js.LICENSE.txt
 /usr/lib64/insync/ideskui/build/static/js/5.d90a46dc.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/6.b9394288.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/6.b9394288.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/6.34b00f31.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/6.34b00f31.chunk.js.map
 /usr/lib64/insync/ideskui/build/static/js/main.0cdb9cad.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/main.0cdb9cad.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.de5400f8.js
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.de5400f8.js.map
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.c71da354.js
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.c71da354.js.map
 /usr/lib64/insync/ideskui/build/static/media/Lato-Black.e5c10b5f.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Bold.401bd636.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Light.bd895b1e.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Regular.79164ee5.ttf
 /usr/lib64/insync/ideskui/build/static/media/od-avatar.e64639c8.png
+/usr/lib64/insync/include/python3.7m/pyconfig.h
 /usr/lib64/insync/insync
-/usr/lib64/insync/lib-dynload/_asyncio.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_bisect.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_blake2.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_bz2.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_codecs_cn.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_codecs_hk.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_codecs_iso2022.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_codecs_jp.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_codecs_kr.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_codecs_tw.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_contextvars.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_ctypes.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_curses.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_curses_panel.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_datetime.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_decimal.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_elementtree.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_hashlib.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_heapq.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_json.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_lzma.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_md5.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_multibytecodec.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_multiprocessing.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_opcode.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_pickle.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_posixsubprocess.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_queue.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_random.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_sha1.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_sha256.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_sha3.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_sha512.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_socket.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_sqlite3.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_ssl.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/_struct.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/array.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/binascii.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/fcntl.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/grp.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/math.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/mmap.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/pyexpat.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/readline.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/resource.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/select.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/termios.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/unicodedata.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/lib-dynload/zlib.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/libICE.so.6
 /usr/lib64/insync/libQt5Core.so.5
 /usr/lib64/insync/libQt5DBus.so.5
 /usr/lib64/insync/libQt5EglFSDeviceIntegration.so.5
-/usr/lib64/insync/libQt5EglFsKmsSupport.so.5
 /usr/lib64/insync/libQt5Gui.so.5
 /usr/lib64/insync/libQt5Network.so.5
 /usr/lib64/insync/libQt5Positioning.so.5
@@ -716,7 +905,6 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/libQt5Qml.so.5
 /usr/lib64/insync/libQt5Quick.so.5
 /usr/lib64/insync/libQt5QuickWidgets.so.5
-/usr/lib64/insync/libQt5SerialPort.so.5
 /usr/lib64/insync/libQt5Svg.so.5
 /usr/lib64/insync/libQt5WaylandClient.so.5
 /usr/lib64/insync/libQt5WaylandCompositor.so.5
@@ -728,7 +916,6 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/libQt5WebView.so.5
 /usr/lib64/insync/libQt5Widgets.so.5
 /usr/lib64/insync/libQt5XcbQpa.so.5
-/usr/lib64/insync/libSM.so.6
 /usr/lib64/insync/libXau.so.6
 /usr/lib64/insync/libXcomposite.so.1
 /usr/lib64/insync/libXcursor.so.1
@@ -740,8 +927,6 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/libXrandr.so.2
 /usr/lib64/insync/libXrender.so.1
 /usr/lib64/insync/libXtst.so.6
-/usr/lib64/insync/libasound.so.2
-/usr/lib64/insync/libasyncns.so.0
 /usr/lib64/insync/libatk-1.0.so.0
 /usr/lib64/insync/libatk-bridge-2.0.so.0
 /usr/lib64/insync/libatspi.so.0
@@ -753,10 +938,7 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/libbz2.so.1
 /usr/lib64/insync/libcairo-gobject.so.2
 /usr/lib64/insync/libcairo.so.2
-/usr/lib64/insync/libcap.so.2
-/usr/lib64/insync/libcloudproviders.so.0
 /usr/lib64/insync/libcom_err.so.2
-/usr/lib64/insync/libcrypt.so.2
 /usr/lib64/insync/libcrypto.so.1.1
 /usr/lib64/insync/libcups.so.2
 /usr/lib64/insync/libcurl.so.4
@@ -771,6 +953,7 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/libgcc_s.so.1
 /usr/lib64/insync/libgcrypt.so.20
 /usr/lib64/insync/libgdk-3.so.0
+/usr/lib64/insync/libgdk_pixbuf-2.0.so.0
 /usr/lib64/insync/libgio-2.0.so.0
 /usr/lib64/insync/libgirepository-1.0.so.1
 /usr/lib64/insync/libglib-2.0.so.0
@@ -780,7 +963,6 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/libgobject-2.0.so.0
 /usr/lib64/insync/libgpg-error.so.0
 /usr/lib64/insync/libgraphite2.so.3
-/usr/lib64/insync/libgsm.so.1
 /usr/lib64/insync/libgssapi_krb5.so.2
 /usr/lib64/insync/libgthread-2.0.so.0
 /usr/lib64/insync/libgtk-3.so.0
@@ -801,8 +983,6 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/libncursesw.so.6
 /usr/lib64/insync/libnettle.so.8
 /usr/lib64/insync/libnspr4.so
-/usr/lib64/insync/libogg.so.0
-/usr/lib64/insync/libopus.so.0
 /usr/lib64/insync/libp11-kit.so.0
 /usr/lib64/insync/libpanelw.so.6
 /usr/lib64/insync/libpango-1.0.so.0
@@ -813,31 +993,40 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/libpixman-1.so.0
 /usr/lib64/insync/libplc4.so
 /usr/lib64/insync/libplds4.so
-/usr/lib64/insync/libpulsecommon-14.2.so
 /usr/lib64/insync/libpyside2.abi3.so.5.12
 /usr/lib64/insync/libpython3.7m.so.1.0
 /usr/lib64/insync/libreadline.so.8
 /usr/lib64/insync/libselinux.so.1
 /usr/lib64/insync/libshiboken2.abi3.so.5.12
 /usr/lib64/insync/libsmime3.so
-/usr/lib64/insync/libsndfile.so.1
 /usr/lib64/insync/libsqlite3.so.0
 /usr/lib64/insync/libssl.so.1.1
 /usr/lib64/insync/libstdc++.so.6
 /usr/lib64/insync/libsystemd.so.0
 /usr/lib64/insync/libtasn1.so.6
 /usr/lib64/insync/libunistring.so.2
-/usr/lib64/insync/libuuid.so.1
 /usr/lib64/insync/libwayland-client.so.0
 /usr/lib64/insync/libwayland-cursor.so.0
 /usr/lib64/insync/libwayland-egl.so.1
+/usr/lib64/insync/libxcb-render.so.0
+/usr/lib64/insync/libxcb-shm.so.0
+/usr/lib64/insync/libxcb-xfixes.so.0
 /usr/lib64/insync/libxml2.so.2
 /usr/lib64/insync/libz.so.1
 /usr/lib64/insync/libzstd.so.1
+/usr/lib64/insync/math.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/mmap.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/psutil/_psutil_linux.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/psutil/_psutil_posix.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/pycurl.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/pyexpat.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/readline.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/resource.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/select.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/shiboken2/shiboken2.abi3.so
+/usr/lib64/insync/termios.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/unicodedata.cpython-37m-x86_64-linux-gnu.so
+/usr/lib64/insync/zlib.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/zlib/cpython-37m-x86_64-linux-gnu/soib.cpython-37m-x86_64-linux-gnu.so
 
 %files doc
