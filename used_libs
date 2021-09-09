@@ -1,10 +1,10 @@
 ld-linux-x86-64.so.2
 libEGL.so.1
+libFLAC.so.8
 libGL.so.1
 libQt5VirtualKeyboard.so.5
 libX11-xcb.so.1
 libX11.so.6
-libasound.so.2
 libc.so.6
 libdl.so.2
 libdrm.so.2
@@ -18,6 +18,8 @@ librt.so.1
 libthai.so.0
 libtinfo.so.6
 libutil.so.1
+libvorbis.so.0
+libvorbisenc.so.2
 libwayland-server.so.0
 libxcb.so.1
 libxkbcommon-x11.so.0
