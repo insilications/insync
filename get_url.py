@@ -126,7 +126,7 @@ def main():
                 print(f"Unable to extract {filename} in {cwd}: {err}")
                 sys.exit(1)
 
-            fix_insync_cmd1 = f'rm libX11* && rm libxkbcommon.so* && rm libtinfo.so* && rm libpng16.so* && rm lib{{drm,GLX,GLdispatch}}.so* && rm libgdk_pixbuf-2.0.so* && rm libxkbcommon.so* && rm libxcb* && rm libncurses*'
+            fix_insync_cmd1 = f'rm -f libX11* libxkbcommon.so* libtinfo.so* libpng16.so* lib{{drm,GLX,GLdispatch}}.so* libgdk_pixbuf-2.0.so* libxkbcommon.so* libxcb* libncurses*'
             fix_insync_cwd1 = f"{cwd}/usr/lib/insync/"
             #print(f"{fix_insync_cmd1}")
             #print(f"{fix_insync_cwd1}")

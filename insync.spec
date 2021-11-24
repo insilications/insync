@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : insync
 Version  : 3.6.1.50206
-Release  : 59
+Release  : 62
 URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.6.1.50206.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.6.1.50206.tar.gz
 Summary  : No detailed summary available
@@ -111,7 +111,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1637774917
+export SOURCE_DATE_EPOCH=1637775657
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -127,7 +127,7 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1637774917
+export SOURCE_DATE_EPOCH=1637775657
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -671,7 +671,6 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libgcc_s.so.1
 /usr/lib64/insync/libgcrypt.so.20
 /usr/lib64/insync/libgdk-3.so.0
-/usr/lib64/insync/libgdk_pixbuf-2.0.so.0
 /usr/lib64/insync/libgio-2.0.so.0
 /usr/lib64/insync/libgirepository-1.0.so.1
 /usr/lib64/insync/libglib-2.0.so.0
@@ -703,7 +702,6 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/liblz4.so.1
 /usr/lib64/insync/liblzma.so.5
 /usr/lib64/insync/libmount.so.1
-/usr/lib64/insync/libncursesw.so.6
 /usr/lib64/insync/libnettle.so.8
 /usr/lib64/insync/libnspr4.so
 /usr/lib64/insync/libogg.so.0
@@ -738,10 +736,6 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libwayland-cursor.so.0
 /usr/lib64/insync/libwayland-egl.so.1
 /usr/lib64/insync/libwayland-server.so.0
-/usr/lib64/insync/libxcb-glx.so.0
-/usr/lib64/insync/libxcb-render.so.0
-/usr/lib64/insync/libxcb-shm.so.0
-/usr/lib64/insync/libxcb-xfixes.so.0
 /usr/lib64/insync/libxml2.so.2
 /usr/lib64/insync/libz.so.1
 /usr/lib64/insync/libzstd.so.1
