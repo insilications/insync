@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : insync
-Version  : 3.6.1
-Release  : 57
-URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.6.1.tar.gz
-Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.6.1.tar.gz
+Version  : 3.6.1.50206
+Release  : 59
+URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.6.1.50206.tar.gz
+Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.6.1.50206.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -102,8 +102,8 @@ man components for the insync package.
 
 
 %prep
-%setup -q -c -n insync-v3.6.1.tar
-cd %{_builddir}/insync-v3.6.1.tar
+%setup -q -c -n insync-v3.6.1.50206.tar
+cd %{_builddir}/insync-v3.6.1.50206.tar
 
 %build
 unset http_proxy
@@ -111,7 +111,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1637769123
+export SOURCE_DATE_EPOCH=1637774917
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -127,7 +127,7 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1637769123
+export SOURCE_DATE_EPOCH=1637774917
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
@@ -606,7 +606,6 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/lib-dynload/termios.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/lib-dynload/unicodedata.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/lib-dynload/zlib.cpython-37m-x86_64-linux-gnu.so
-/usr/lib64/insync/libICE.so.6
 /usr/lib64/insync/libQt5Core.so.5
 /usr/lib64/insync/libQt5DBus.so.5
 /usr/lib64/insync/libQt5EglFSDeviceIntegration.so.5
@@ -630,7 +629,6 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libQt5WebView.so.5
 /usr/lib64/insync/libQt5Widgets.so.5
 /usr/lib64/insync/libQt5XcbQpa.so.5
-/usr/lib64/insync/libSM.so.6
 /usr/lib64/insync/libXau.so.6
 /usr/lib64/insync/libXcomposite.so.1
 /usr/lib64/insync/libXcursor.so.1
@@ -690,10 +688,14 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libharfbuzz.so.0
 /usr/lib64/insync/libhogweed.so.6
 /usr/lib64/insync/libicudata.so.56
+/usr/lib64/insync/libicudata.so.69
 /usr/lib64/insync/libicui18n.so.56
+/usr/lib64/insync/libicui18n.so.69
 /usr/lib64/insync/libicuuc.so.56
+/usr/lib64/insync/libicuuc.so.69
 /usr/lib64/insync/libidn2.so.0
 /usr/lib64/insync/libjpeg.so.62
+/usr/lib64/insync/libjson-glib-1.0.so.0
 /usr/lib64/insync/libk5crypto.so.3
 /usr/lib64/insync/libkeyutils.so.1
 /usr/lib64/insync/libkrb5.so.3
@@ -716,7 +718,7 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libpixman-1.so.0
 /usr/lib64/insync/libplc4.so
 /usr/lib64/insync/libplds4.so
-/usr/lib64/insync/libpulsecommon-14.2.so
+/usr/lib64/insync/libpulsecommon-15.0.so
 /usr/lib64/insync/libpyside2.abi3.so.5.12
 /usr/lib64/insync/libpython3.7m.so.1.0
 /usr/lib64/insync/libreadline.so.8
@@ -727,13 +729,15 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libsqlite3.so.0
 /usr/lib64/insync/libssl.so.1.1
 /usr/lib64/insync/libstdc++.so.6
+/usr/lib64/insync/libstemmer.so.0
 /usr/lib64/insync/libsystemd.so.0
 /usr/lib64/insync/libtasn1.so.6
+/usr/lib64/insync/libtracker-sparql-3.0.so.0
 /usr/lib64/insync/libunistring.so.2
-/usr/lib64/insync/libuuid.so.1
 /usr/lib64/insync/libwayland-client.so.0
 /usr/lib64/insync/libwayland-cursor.so.0
 /usr/lib64/insync/libwayland-egl.so.1
+/usr/lib64/insync/libwayland-server.so.0
 /usr/lib64/insync/libxcb-glx.so.0
 /usr/lib64/insync/libxcb-render.so.0
 /usr/lib64/insync/libxcb-shm.so.0

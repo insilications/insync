@@ -17,10 +17,8 @@ libresolv.so.2
 librt.so.1
 libthai.so.0
 libtinfo.so.6
-libutil.so.1
 libvorbis.so.0
 libvorbisenc.so.2
-libwayland-server.so.0
 libxcb.so.1
 libxkbcommon-x11.so.0
 libxkbcommon.so.0

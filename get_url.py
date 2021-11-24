@@ -66,13 +66,21 @@ def main():
             get_url_fc_rpm_match = get_url_fc_rpm_re.search(link.get('href'))
             if get_url_fc_rpm_match:
                 #print(get_url_fc_rpm_match.group(0))
-                found_url = re.sub(get_urlfc_rpm_replace_re, "fc34", get_url_fc_rpm_match.group(0))
+                found_url = re.sub(get_urlfc_rpm_replace_re, "fc35", get_url_fc_rpm_match.group(0))
 
+        get_version_from_filename_re = re.compile(r"(?:insync-)((?:\d+)(?:[-._]*\d+)*)(?:-fc\d{2}\.x86_64\.rpm)")
         file_version = ""
         filename = ""
         if found_url:
+            file_version_match = get_version_from_filename_re.search(os.path.basename(found_url))
             filename = f"{cwd}/{os.path.basename(found_url)}"
-            file_version = thread_version_sort[-1][0]
+            #print(f"arquivo: {os.path.basename(found_url)}")
+            if file_version_match:
+                file_version = file_version_match.group(1)
+                #print(f"version: {file_version}")
+            else:
+                print("Cant find download link in thread")
+                sys.exit(1)
         else:
             print("Cant find download link in thread")
             sys.exit(1)
@@ -118,7 +126,7 @@ def main():
                 print(f"Unable to extract {filename} in {cwd}: {err}")
                 sys.exit(1)
 
-            fix_insync_cmd1 = f'rm libX11* && rm libxkbcommon.so* && rm libtinfo.so* && rm libpng16.so* && rm lib{{drm,GLX,GLdispatch}}.so* && rm libgdk_pixbuf-2.0.so* && rm libxkbcommon.so* && rm libxcb*'
+            fix_insync_cmd1 = f'rm libX11* && rm libxkbcommon.so* && rm libtinfo.so* && rm libpng16.so* && rm lib{{drm,GLX,GLdispatch}}.so* && rm libgdk_pixbuf-2.0.so* && rm libxkbcommon.so* && rm libxcb* && rm libncurses*'
             fix_insync_cwd1 = f"{cwd}/usr/lib/insync/"
             #print(f"{fix_insync_cmd1}")
             #print(f"{fix_insync_cwd1}")
