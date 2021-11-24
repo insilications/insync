@@ -4,13 +4,13 @@
 #
 %define keepstatic 1
 Name     : insync
-Version  : 3.5.3
-Release  : 56
-URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.5.3.tar.gz
-Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.5.3.tar.gz
+Version  : 3.6.1
+Release  : 57
+URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.6.1.tar.gz
+Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.6.1.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 LGPL-2.1
+License  : GPL-2.0
 Requires: insync-bin = %{version}-%{release}
 Requires: insync-data = %{version}-%{release}
 Requires: insync-libexec = %{version}-%{release}
@@ -23,16 +23,15 @@ BuildRequires : curl
 BuildRequires : curl-bin
 BuildRequires : curl-dev
 BuildRequires : curl-lib
-BuildRequires : fastnumbers
 BuildRequires : findutils
 BuildRequires : mlocate
-BuildRequires : natsort
 BuildRequires : openssl-dev
 BuildRequires : openssl-lib
 BuildRequires : p11-kit
 BuildRequires : pcre-dev
 BuildRequires : pcre-extras
 BuildRequires : requests
+BuildRequires : sd
 BuildRequires : xmlstarlet
 BuildRequires : zlib-dev
 # Suppress stripping binaries
@@ -44,8 +43,7 @@ BuildRequires : zlib-dev
 AutoReq: no
 
 %description
-PycURL -- A Python Interface To The cURL library
-================================================
+No detailed description available
 
 %package bin
 Summary: bin components for the insync package.
@@ -83,17 +81,6 @@ AutoReq: no
 dev components for the insync package.
 
 
-%package doc
-Summary: doc components for the insync package.
-Group: Documentation
-Requires: insync-man = %{version}-%{release}
-# Disable automatic requeriments processing
-AutoReq: no
-
-%description doc
-doc components for the insync package.
-
-
 %package libexec
 Summary: libexec components for the insync package.
 Group: Default
@@ -115,8 +102,8 @@ man components for the insync package.
 
 
 %prep
-%setup -q -c -n insync-v3.5.3.tar
-cd %{_builddir}/insync-v3.5.3.tar
+%setup -q -c -n insync-v3.6.1.tar
+cd %{_builddir}/insync-v3.6.1.tar
 
 %build
 unset http_proxy
@@ -124,7 +111,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1631170233
+export SOURCE_DATE_EPOCH=1637769123
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -140,13 +127,13 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1631170233
+export SOURCE_DATE_EPOCH=1637769123
 rm -rf %{buildroot}
 pushd clr-build
 %make_install
 popd
 ## Remove excluded files
-rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/Makefile
+rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/Makefile
 
 %files
 %defattr(-,root,root,-)
@@ -324,34 +311,10 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 %files dev
 %defattr(-,root,root,-)
 /usr/lib64/.build-id/24/675b0091f38f45c5c1c5484cf24925b439b164
-/usr/lib64/insync/Crypto/Cipher/AES.pyi
-/usr/lib64/insync/Crypto/Cipher/ARC2.pyi
-/usr/lib64/insync/Crypto/Cipher/ARC4.pyi
-/usr/lib64/insync/Crypto/Cipher/Blowfish.pyi
-/usr/lib64/insync/Crypto/Cipher/CAST.pyi
-/usr/lib64/insync/Crypto/Cipher/ChaCha20.pyi
-/usr/lib64/insync/Crypto/Cipher/ChaCha20_Poly1305.pyi
-/usr/lib64/insync/Crypto/Cipher/DES.pyi
-/usr/lib64/insync/Crypto/Cipher/DES3.pyi
-/usr/lib64/insync/Crypto/Cipher/PKCS1_OAEP.pyi
-/usr/lib64/insync/Crypto/Cipher/PKCS1_v1_5.pyi
-/usr/lib64/insync/Crypto/Cipher/Salsa20.pyi
 /usr/lib64/insync/Crypto/Cipher/_ARC4.abi3.so
-/usr/lib64/insync/Crypto/Cipher/_EKSBlowfish.pyi
 /usr/lib64/insync/Crypto/Cipher/_Salsa20.abi3.so
-/usr/lib64/insync/Crypto/Cipher/__init__.pyi
 /usr/lib64/insync/Crypto/Cipher/_chacha20.abi3.so
-/usr/lib64/insync/Crypto/Cipher/_mode_cbc.pyi
-/usr/lib64/insync/Crypto/Cipher/_mode_ccm.pyi
-/usr/lib64/insync/Crypto/Cipher/_mode_cfb.pyi
-/usr/lib64/insync/Crypto/Cipher/_mode_ctr.pyi
-/usr/lib64/insync/Crypto/Cipher/_mode_eax.pyi
-/usr/lib64/insync/Crypto/Cipher/_mode_ecb.pyi
-/usr/lib64/insync/Crypto/Cipher/_mode_gcm.pyi
-/usr/lib64/insync/Crypto/Cipher/_mode_ocb.pyi
-/usr/lib64/insync/Crypto/Cipher/_mode_ofb.pyi
-/usr/lib64/insync/Crypto/Cipher/_mode_openpgp.pyi
-/usr/lib64/insync/Crypto/Cipher/_mode_siv.pyi
+/usr/lib64/insync/Crypto/Cipher/_pkcs1_decode.abi3.so
 /usr/lib64/insync/Crypto/Cipher/_raw_aes.abi3.so
 /usr/lib64/insync/Crypto/Cipher/_raw_aesni.abi3.so
 /usr/lib64/insync/Crypto/Cipher/_raw_arc2.abi3.so
@@ -366,28 +329,6 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/Crypto/Cipher/_raw_eksblowfish.abi3.so
 /usr/lib64/insync/Crypto/Cipher/_raw_ocb.abi3.so
 /usr/lib64/insync/Crypto/Cipher/_raw_ofb.abi3.so
-/usr/lib64/insync/Crypto/Hash/BLAKE2b.pyi
-/usr/lib64/insync/Crypto/Hash/BLAKE2s.pyi
-/usr/lib64/insync/Crypto/Hash/CMAC.pyi
-/usr/lib64/insync/Crypto/Hash/HMAC.pyi
-/usr/lib64/insync/Crypto/Hash/MD2.pyi
-/usr/lib64/insync/Crypto/Hash/MD4.pyi
-/usr/lib64/insync/Crypto/Hash/MD5.pyi
-/usr/lib64/insync/Crypto/Hash/Poly1305.pyi
-/usr/lib64/insync/Crypto/Hash/RIPEMD.pyi
-/usr/lib64/insync/Crypto/Hash/RIPEMD160.pyi
-/usr/lib64/insync/Crypto/Hash/SHA.pyi
-/usr/lib64/insync/Crypto/Hash/SHA1.pyi
-/usr/lib64/insync/Crypto/Hash/SHA224.pyi
-/usr/lib64/insync/Crypto/Hash/SHA256.pyi
-/usr/lib64/insync/Crypto/Hash/SHA384.pyi
-/usr/lib64/insync/Crypto/Hash/SHA3_224.pyi
-/usr/lib64/insync/Crypto/Hash/SHA3_256.pyi
-/usr/lib64/insync/Crypto/Hash/SHA3_384.pyi
-/usr/lib64/insync/Crypto/Hash/SHA3_512.pyi
-/usr/lib64/insync/Crypto/Hash/SHA512.pyi
-/usr/lib64/insync/Crypto/Hash/SHAKE128.pyi
-/usr/lib64/insync/Crypto/Hash/SHAKE256.pyi
 /usr/lib64/insync/Crypto/Hash/_BLAKE2b.abi3.so
 /usr/lib64/insync/Crypto/Hash/_BLAKE2s.abi3.so
 /usr/lib64/insync/Crypto/Hash/_MD2.abi3.so
@@ -399,54 +340,15 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/Crypto/Hash/_SHA256.abi3.so
 /usr/lib64/insync/Crypto/Hash/_SHA384.abi3.so
 /usr/lib64/insync/Crypto/Hash/_SHA512.abi3.so
-/usr/lib64/insync/Crypto/Hash/__init__.pyi
 /usr/lib64/insync/Crypto/Hash/_ghash_clmul.abi3.so
 /usr/lib64/insync/Crypto/Hash/_ghash_portable.abi3.so
 /usr/lib64/insync/Crypto/Hash/_keccak.abi3.so
 /usr/lib64/insync/Crypto/Hash/_poly1305.abi3.so
-/usr/lib64/insync/Crypto/Hash/keccak.pyi
-/usr/lib64/insync/Crypto/IO/PEM.pyi
-/usr/lib64/insync/Crypto/IO/PKCS8.pyi
-/usr/lib64/insync/Crypto/IO/_PBES.pyi
-/usr/lib64/insync/Crypto/Math/Numbers.pyi
-/usr/lib64/insync/Crypto/Math/Primality.pyi
-/usr/lib64/insync/Crypto/Math/_IntegerBase.pyi
-/usr/lib64/insync/Crypto/Math/_IntegerCustom.pyi
-/usr/lib64/insync/Crypto/Math/_IntegerGMP.pyi
-/usr/lib64/insync/Crypto/Math/_IntegerNative.pyi
 /usr/lib64/insync/Crypto/Math/_modexp.abi3.so
-/usr/lib64/insync/Crypto/Protocol/KDF.pyi
-/usr/lib64/insync/Crypto/Protocol/SecretSharing.pyi
-/usr/lib64/insync/Crypto/Protocol/__init__.pyi
 /usr/lib64/insync/Crypto/Protocol/_scrypt.abi3.so
-/usr/lib64/insync/Crypto/PublicKey/DSA.pyi
-/usr/lib64/insync/Crypto/PublicKey/ECC.pyi
-/usr/lib64/insync/Crypto/PublicKey/ElGamal.pyi
-/usr/lib64/insync/Crypto/PublicKey/RSA.pyi
-/usr/lib64/insync/Crypto/PublicKey/__init__.pyi
 /usr/lib64/insync/Crypto/PublicKey/_ec_ws.abi3.so
-/usr/lib64/insync/Crypto/PublicKey/_openssh.pyi
-/usr/lib64/insync/Crypto/Random/__init__.pyi
-/usr/lib64/insync/Crypto/Random/random.pyi
-/usr/lib64/insync/Crypto/Signature/DSS.pyi
-/usr/lib64/insync/Crypto/Signature/PKCS1_PSS.pyi
-/usr/lib64/insync/Crypto/Signature/PKCS1_v1_5.pyi
-/usr/lib64/insync/Crypto/Signature/pkcs1_15.pyi
-/usr/lib64/insync/Crypto/Signature/pss.pyi
-/usr/lib64/insync/Crypto/Util/Counter.pyi
-/usr/lib64/insync/Crypto/Util/Padding.pyi
-/usr/lib64/insync/Crypto/Util/RFC1751.pyi
-/usr/lib64/insync/Crypto/Util/_cpu_features.pyi
 /usr/lib64/insync/Crypto/Util/_cpuid_c.abi3.so
-/usr/lib64/insync/Crypto/Util/_file_system.pyi
-/usr/lib64/insync/Crypto/Util/_raw_api.pyi
 /usr/lib64/insync/Crypto/Util/_strxor.abi3.so
-/usr/lib64/insync/Crypto/Util/asn1.pyi
-/usr/lib64/insync/Crypto/Util/number.pyi
-/usr/lib64/insync/Crypto/Util/py3compat.pyi
-/usr/lib64/insync/Crypto/Util/strxor.pyi
-/usr/lib64/insync/Crypto/__init__.pyi
-/usr/lib64/insync/Crypto/py.typed
 /usr/lib64/insync/PySide2/Qt/resources/icudtl.dat
 /usr/lib64/insync/PySide2/Qt/resources/qtwebengine_devtools_resources.pak
 /usr/lib64/insync/PySide2/Qt/resources/qtwebengine_resources.pak
@@ -642,12 +544,12 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/ideskui/build/static/js/5.d90a46dc.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/5.d90a46dc.chunk.js.LICENSE.txt
 /usr/lib64/insync/ideskui/build/static/js/5.d90a46dc.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/6.e5adeb41.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/6.e5adeb41.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/6.ee8edd7a.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/6.ee8edd7a.chunk.js.map
 /usr/lib64/insync/ideskui/build/static/js/main.0cdb9cad.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/main.0cdb9cad.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.dadda6b3.js
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.dadda6b3.js.map
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.31bc3f52.js
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.31bc3f52.js.map
 /usr/lib64/insync/ideskui/build/static/media/Lato-Black.e5c10b5f.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Bold.401bd636.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Light.bd895b1e.ttf
@@ -844,16 +746,6 @@ rm -f %{buildroot}/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/M
 /usr/lib64/insync/pycurl.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/shiboken2/shiboken2.abi3.so
 /usr/lib64/insync/zlib/cpython-37m-x86_64-linux-gnu/soib.cpython-37m-x86_64-linux-gnu.so
-
-%files doc
-%defattr(0644,root,root,0755)
-/usr/lib64/insync/share/doc/pycurl/AUTHORS
-/usr/lib64/insync/share/doc/pycurl/COPYING-LGPL
-/usr/lib64/insync/share/doc/pycurl/COPYING-MIT
-/usr/lib64/insync/share/doc/pycurl/ChangeLog
-/usr/lib64/insync/share/doc/pycurl/INSTALL.rst
-/usr/lib64/insync/share/doc/pycurl/README.rst
-/usr/lib64/insync/share/doc/pycurl/RELEASE-NOTES.rst
 
 %files libexec
 %defattr(-,root,root,-)

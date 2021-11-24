@@ -8,10 +8,9 @@ curl
 curl-bin
 curl-dev
 curl-lib
-fastnumbers
 findutils
 mlocate
-natsort
+sd
 openssl-dev
 openssl-lib
 p11-kit
