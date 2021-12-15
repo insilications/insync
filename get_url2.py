@@ -33,32 +33,63 @@ def main():
     filename = ""
     filename = [f.path for f in os.scandir(cwd) if f.is_file() and "insync-v" in f.name]
 
-# /insilications/Downloads/insync-3.7.0.50216-fc35.x86_64.rpm
-# https://d2t3ff60b2tol4.cloudfront.net/builds/insync-3.7.0.50216-fc35.x86_64.rpm
-#       var rpmLink = 'https://d2t3ff60b2tol4.cloudfront.net/builds/insync-'
-# https://d2t3ff60b2tol4.cloudfront.net/builds/insync-dolphin-3.4.0.40973-1.noarch.rpm
-# https://d2t3ff60b2tol4.cloudfront.net/builds/insync-dolphin-3.4.2.40983-1.noarch.rpm
-# https://d2t3ff60b2tol4.cloudfront.net/builds/fedora/35/noarch/insync-dolphin-3.4.2.40983-1.noarch.rpm
     if not filename:
-        linux_releases_js = requests.get("https://d2t3ff60b2tol4.cloudfront.net/changelogs/desktop/linuxReleases.js").text
-        linux_releases_js_re = re.compile(r"(?:\"version\":\")((?:\d+)(?:[-._]*\d+)*)(?:\",)")
+        soup = BeautifulSoup(requests.get("https://forums.insynchq.com/c/releases/15").text, "html5lib")
+        thread_list = soup.find_all("tr", attrs={"class": "topic-list-item"})
 
-        #for m in linux_releases_js_re.finditer(linux_releases_js):
-            #print('%02d-%02d: %s' % (m.start(), m.end(), m.group(1)))
+        thread_version_re = re.compile(r"(?:Insync version:\s|Insync version\s)((?:\d+)(?:[-._]*\d+)*)")
+        thread_version_sort = []
+        for thread in thread_list:
+            thread_title = thread.find("a", attrs={"class": "title"})
+            thread_version_match = thread_version_re.search(thread_title.text)
+            if thread_version_match:
+                thread_version_sort.append(list([f"{thread_version_match.group(1)}", f"{thread_title.get('href')}"]))
 
-        linux_releases_js_version_list = linux_releases_js_re.findall(linux_releases_js)
-        #print(linux_releases_js_version_list)
-        last_version = linux_releases_js_version_list[0]
-        found_url = f"https://d2t3ff60b2tol4.cloudfront.net/builds/insync-{last_version}-fc35.x86_64.rpm"
-        filename = f"{cwd}/{os.path.basename(found_url)}"
+        if not thread_version_sort:
+            print("Cant find thread")
+            sys.exit(1)
 
-        print(f"Last version: {last_version}")
-        print(f"URL download: {found_url}")
-        print(f"Filename: {filename}")
+        thread_version_sort = natsort.natsorted(thread_version_sort, key=itemgetter(0))
+
+        #for thread in thread_version_sort:
+            #print(thread)
+        #print(f"Last: {thread_version_sort[-1][0]} - {thread_version_sort[-1][1]}")
+
+        thread_version_html = BeautifulSoup(requests.get(thread_version_sort[-1][1]).text, "html5lib")
+        thread_version_top_post = thread_version_html.find("div", attrs={"class": "topic-body"})
+        thread_version_top_post_links = thread_version_top_post.find_all("a")
+
+        get_url_fc_rpm_re = re.compile(r".*(?:-fc3\d{1}.x86_64.rpm)")
+        get_urlfc_rpm_replace_re = re.compile(r"fc3\d")
+        found_url = ""
+        for link in thread_version_top_post_links:
+            get_url_fc_rpm_match = get_url_fc_rpm_re.search(link.get('href'))
+            if get_url_fc_rpm_match:
+                #print(get_url_fc_rpm_match.group(0))
+                found_url = re.sub(get_urlfc_rpm_replace_re, "fc35", get_url_fc_rpm_match.group(0))
+
+        get_version_from_filename_re = re.compile(r"(?:insync-)((?:\d+)(?:[-._]*\d+)*)(?:-fc\d{2}\.x86_64\.rpm)")
+        file_version = ""
+        filename = ""
+        if found_url:
+            file_version_match = get_version_from_filename_re.search(os.path.basename(found_url))
+            filename = f"{cwd}/{os.path.basename(found_url)}"
+            #print(f"arquivo: {os.path.basename(found_url)}")
+            if file_version_match:
+                file_version = file_version_match.group(1)
+                #print(f"version: {file_version}")
+            else:
+                print("Cant find download link in thread")
+                sys.exit(1)
+        else:
+            print("Cant find download link in thread")
+            sys.exit(1)
 
         if not os.path.exists(filename):
+            #print(f"{found_url} {thread_version_sort[-1][0]}")
+            curl_result = ""
             curl_cmd = f"curl -L -O {found_url}"
-            print(f"curl_cmd: {curl_cmd}")
+            #print(f"curl_cmd: {curl_cmd}")
             try:
                 process = subprocess.run(
                     curl_cmd,
@@ -74,9 +105,12 @@ def main():
                 print(f"Unable to download {found_url} in {cwd}: {err}")
                 sys.exit(1)
 
+            curl_result = process.stdout
+            #print(f"curl_result: {curl_result}")
+
         if os.path.isfile(filename):
             rpm_extract_cmd = f'rpm2cpio {filename} | cpio -ivdm --directory="{cwd}"'
-            print(f"{rpm_extract_cmd}")
+            #print(f"{rpm_extract_cmd}")
             try:
                 process = subprocess.run(
                     rpm_extract_cmd,
@@ -94,8 +128,8 @@ def main():
 
             fix_insync_cmd1 = f'rm -f libX11* libxkbcommon.so* libtinfo.so* libpng16.so* lib{{drm,GLX,GLdispatch}}.so* libgdk_pixbuf-2.0.so* libxkbcommon.so* libxcb* libncurses*'
             fix_insync_cwd1 = f"{cwd}/usr/lib/insync/"
-            print(f"{fix_insync_cmd1}")
-            print(f"{fix_insync_cwd1}")
+            #print(f"{fix_insync_cmd1}")
+            #print(f"{fix_insync_cwd1}")
             process = subprocess.run(
                 fix_insync_cmd1,
                 check=False,
@@ -109,8 +143,8 @@ def main():
 
             fix_insync_cwd2 = f"{cwd}/usr/bin/"
             fix_insync_cmd2 = f"sd '/usr/lib/insync/insync' '/usr/lib64/insync/insync' 'insync'"
-            print(f"{fix_insync_cmd2}")
-            print(f"{fix_insync_cwd2}")
+            #print(f"{fix_insync_cmd2}")
+            #print(f"{fix_insync_cwd2}")
             process = subprocess.run(
                 fix_insync_cmd2,
                 check=False,
@@ -122,8 +156,8 @@ def main():
                 cwd=fix_insync_cwd2,
             )
             fix_insync_cmd3 = f"sd '\"\$@\"' '\"$@\" --ca-path /var/cache/ca-certs/anchors/ --qt-qpa-platform xcb' 'insync'"
-            print(f"{fix_insync_cmd3}")
-            print(f"{fix_insync_cwd2}")
+            #print(f"{fix_insync_cmd3}")
+            #print(f"{fix_insync_cwd2}")
             process = subprocess.run(
                 fix_insync_cmd3,
                 check=False,
@@ -135,8 +169,8 @@ def main():
                 cwd=fix_insync_cwd2,
             )
             fix_insync_cmd4 = f"sd 'LC_TIME=C' 'LC_TIME=C QT_QPA_PLATFORM=xcb' 'insync'"
-            print(f"{fix_insync_cmd4}")
-            print(f"{fix_insync_cwd2}")
+            #print(f"{fix_insync_cmd4}")
+            #print(f"{fix_insync_cwd2}")
             process = subprocess.run(
                 fix_insync_cmd4,
                 check=False,
@@ -151,7 +185,7 @@ def main():
         filename_cmake = f"{cwd}/CMakeLists.txt"
         if not os.path.exists(filename_cmake):
             cmake_cmd = f"curl --location https://raw.githubusercontent.com/insilications/insync-clr/master/CMakeLists.txt -o CMakeLists.txt"
-            print(f"cmake_cmd: {cmake_cmd}")
+            #print(f"cmake_cmd: {cmake_cmd}")
             try:
                 process = subprocess.run(
                     cmake_cmd,
@@ -167,10 +201,10 @@ def main():
                 print(f"Unable to download {filename_cmake} in {cwd}: {err}")
                 sys.exit(1)
 
-        filename_tar = f"{cwd}/insync-v{last_version}.tar.gz"
+        filename_tar = f"{cwd}/insync-v{file_version}.tar.gz"
         if not os.path.exists(filename_tar):
             tar_cmd = f"tar --create --add-file=CMakeLists.txt --file=- usr/ | pigz -9 -p 16 > {filename_tar}"
-            print(f"tar_cmd: {tar_cmd}")
+            #print(f"tar_cmd: {tar_cmd}")
             try:
                 process = subprocess.run(
                     tar_cmd,

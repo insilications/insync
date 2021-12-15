@@ -47,13 +47,13 @@ preautospec-checks:
 	@-rm -rf usr/
 	@-rm insync-*.rpm
 
-preautospecnew-checks: download-it
+preautospecnew-checks:
 	$(eval export NEWURL:=$(shell python get_url.py))
 	@-rm CMakeLists.txt
 	@-rm -rf usr/
 	@-rm insync-*.rpm
 
-prebuild-checks: download-it
+prebuild-checks:
 	$(eval export NEWURL:=$(shell python get_url.py))
 	@-rm CMakeLists.txt
 	@-rm -rf usr/
