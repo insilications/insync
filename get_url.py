@@ -4,11 +4,11 @@ import re
 import sys
 import os
 import requests
-import natsort
+#import natsort
 import subprocess
 
-from operator import attrgetter, itemgetter
-from bs4 import BeautifulSoup
+#from operator import attrgetter, itemgetter
+#from bs4 import BeautifulSoup
 
 def write_out(filename, content, mode="w"):
     """File.write convenience wrapper."""
@@ -52,13 +52,13 @@ def main():
         found_url = f"https://d2t3ff60b2tol4.cloudfront.net/builds/insync-{last_version}-fc35.x86_64.rpm"
         filename = f"{cwd}/{os.path.basename(found_url)}"
 
-        print(f"Last version: {last_version}")
-        print(f"URL download: {found_url}")
-        print(f"Filename: {filename}")
+        #print(f"Last version: {last_version}")
+        #print(f"URL download: {found_url}")
+        #print(f"Filename: {filename}")
 
         if not os.path.exists(filename):
             curl_cmd = f"curl -L -O {found_url}"
-            print(f"curl_cmd: {curl_cmd}")
+            #print(f"curl_cmd: {curl_cmd}")
             try:
                 process = subprocess.run(
                     curl_cmd,
@@ -76,7 +76,7 @@ def main():
 
         if os.path.isfile(filename):
             rpm_extract_cmd = f'rpm2cpio {filename} | cpio -ivdm --directory="{cwd}"'
-            print(f"{rpm_extract_cmd}")
+            #print(f"{rpm_extract_cmd}")
             try:
                 process = subprocess.run(
                     rpm_extract_cmd,
@@ -94,8 +94,8 @@ def main():
 
             fix_insync_cmd1 = f'rm -f libX11* libxkbcommon.so* libtinfo.so* libpng16.so* lib{{drm,GLX,GLdispatch}}.so* libgdk_pixbuf-2.0.so* libxkbcommon.so* libxcb* libncurses*'
             fix_insync_cwd1 = f"{cwd}/usr/lib/insync/"
-            print(f"{fix_insync_cmd1}")
-            print(f"{fix_insync_cwd1}")
+            #print(f"{fix_insync_cmd1}")
+            #print(f"{fix_insync_cwd1}")
             process = subprocess.run(
                 fix_insync_cmd1,
                 check=False,
@@ -109,8 +109,8 @@ def main():
 
             fix_insync_cwd2 = f"{cwd}/usr/bin/"
             fix_insync_cmd2 = f"sd '/usr/lib/insync/insync' '/usr/lib64/insync/insync' 'insync'"
-            print(f"{fix_insync_cmd2}")
-            print(f"{fix_insync_cwd2}")
+            #print(f"{fix_insync_cmd2}")
+            #print(f"{fix_insync_cwd2}")
             process = subprocess.run(
                 fix_insync_cmd2,
                 check=False,
@@ -122,8 +122,8 @@ def main():
                 cwd=fix_insync_cwd2,
             )
             fix_insync_cmd3 = f"sd '\"\$@\"' '\"$@\" --ca-path /var/cache/ca-certs/anchors/ --qt-qpa-platform xcb' 'insync'"
-            print(f"{fix_insync_cmd3}")
-            print(f"{fix_insync_cwd2}")
+            #print(f"{fix_insync_cmd3}")
+            #print(f"{fix_insync_cwd2}")
             process = subprocess.run(
                 fix_insync_cmd3,
                 check=False,
@@ -135,8 +135,8 @@ def main():
                 cwd=fix_insync_cwd2,
             )
             fix_insync_cmd4 = f"sd 'LC_TIME=C' 'LC_TIME=C QT_QPA_PLATFORM=xcb' 'insync'"
-            print(f"{fix_insync_cmd4}")
-            print(f"{fix_insync_cwd2}")
+            #print(f"{fix_insync_cmd4}")
+            #print(f"{fix_insync_cwd2}")
             process = subprocess.run(
                 fix_insync_cmd4,
                 check=False,
@@ -151,7 +151,7 @@ def main():
         filename_cmake = f"{cwd}/CMakeLists.txt"
         if not os.path.exists(filename_cmake):
             cmake_cmd = f"curl --location https://raw.githubusercontent.com/insilications/insync-clr/master/CMakeLists.txt -o CMakeLists.txt"
-            print(f"cmake_cmd: {cmake_cmd}")
+            #print(f"cmake_cmd: {cmake_cmd}")
             try:
                 process = subprocess.run(
                     cmake_cmd,
@@ -170,7 +170,7 @@ def main():
         filename_tar = f"{cwd}/insync-v{last_version}.tar.gz"
         if not os.path.exists(filename_tar):
             tar_cmd = f"tar --create --add-file=CMakeLists.txt --file=- usr/ | pigz -9 -p 16 > {filename_tar}"
-            print(f"tar_cmd: {tar_cmd}")
+            #print(f"tar_cmd: {tar_cmd}")
             try:
                 process = subprocess.run(
                     tar_cmd,

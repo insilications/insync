@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : insync
-Version  : 3.6.1.50206
-Release  : 63
-URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.6.1.50206.tar.gz
-Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.6.1.50206.tar.gz
+Version  : 3.7.0.50216
+Release  : 64
+URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.7.0.50216.tar.gz
+Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.7.0.50216.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -102,8 +102,8 @@ man components for the insync package.
 
 
 %prep
-%setup -q -c -n insync-v3.6.1.50206.tar
-cd %{_builddir}/insync-v3.6.1.50206.tar
+%setup -q -c -n insync-v3.7.0.50216.tar
+cd %{_builddir}/insync-v3.7.0.50216.tar
 
 %build
 unset http_proxy
@@ -111,7 +111,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1639093963
+export SOURCE_DATE_EPOCH=1641217904
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -127,8 +127,16 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1639093963
+export SOURCE_DATE_EPOCH=1641217904
 rm -rf %{buildroot}
+export GCC_IGNORE_WERROR=1
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=16 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=16 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=16 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=16 "
 pushd clr-build
 %make_install
 popd
@@ -533,23 +541,23 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/ideskui/build/index.html
 /usr/lib64/insync/ideskui/build/static/css/main.d1c363b2.chunk.css
 /usr/lib64/insync/ideskui/build/static/css/main.d1c363b2.chunk.css.map
-/usr/lib64/insync/ideskui/build/static/js/0.00df56b5.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/0.00df56b5.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/1.8f5538b5.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/1.8f5538b5.chunk.js.LICENSE.txt
-/usr/lib64/insync/ideskui/build/static/js/1.8f5538b5.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/0.f247c416.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/0.f247c416.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/1.3f5ef65f.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/1.3f5ef65f.chunk.js.LICENSE.txt
+/usr/lib64/insync/ideskui/build/static/js/1.3f5ef65f.chunk.js.map
 /usr/lib64/insync/ideskui/build/static/js/4.54079fdd.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/4.54079fdd.chunk.js.LICENSE.txt
 /usr/lib64/insync/ideskui/build/static/js/4.54079fdd.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/5.d90a46dc.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/5.d90a46dc.chunk.js.LICENSE.txt
-/usr/lib64/insync/ideskui/build/static/js/5.d90a46dc.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/6.ee8edd7a.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/6.ee8edd7a.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/main.0cdb9cad.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/main.0cdb9cad.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.31bc3f52.js
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.31bc3f52.js.map
+/usr/lib64/insync/ideskui/build/static/js/5.c02247ed.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/5.c02247ed.chunk.js.LICENSE.txt
+/usr/lib64/insync/ideskui/build/static/js/5.c02247ed.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/6.dbef4731.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/6.dbef4731.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/main.3e52e185.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/main.3e52e185.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.ed09dd5c.js
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.ed09dd5c.js.map
 /usr/lib64/insync/ideskui/build/static/media/Lato-Black.e5c10b5f.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Bold.401bd636.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Light.bd895b1e.ttf
