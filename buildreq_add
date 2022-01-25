@@ -16,6 +16,6 @@ openssl-lib
 p11-kit
 pcre-dev
 pcre-extras
-requests
+pypi-requests
 xmlstarlet
 zlib-dev

@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : insync
 Version  : 3.7.0.50216
-Release  : 70
+Release  : 72
 URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.7.0.50216.tar.gz
 Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.7.0.50216.tar.gz
 Summary  : No detailed summary available
@@ -30,7 +30,7 @@ BuildRequires : openssl-lib
 BuildRequires : p11-kit
 BuildRequires : pcre-dev
 BuildRequires : pcre-extras
-BuildRequires : requests
+BuildRequires : pypi-requests
 BuildRequires : sd
 BuildRequires : xmlstarlet
 BuildRequires : zlib-dev
@@ -111,7 +111,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1641877922
+export SOURCE_DATE_EPOCH=1643116847
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -127,7 +127,7 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1641877922
+export SOURCE_DATE_EPOCH=1643116847
 rm -rf %{buildroot}
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
