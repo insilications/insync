@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : insync
-Version  : 3.7.3.50326
-Release  : 73
-URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.7.3.50326.tar.gz
-Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.7.3.50326.tar.gz
+Version  : 3.7.5.50350
+Release  : 74
+URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.7.5.50350.tar.gz
+Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.7.5.50350.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -102,8 +102,8 @@ man components for the insync package.
 
 
 %prep
-%setup -q -c -n insync-v3.7.3.50326.tar
-cd %{_builddir}/insync-v3.7.3.50326.tar
+%setup -q -c -n insync-v3.7.5.50350.tar
+cd %{_builddir}/insync-v3.7.5.50350.tar
 
 %build
 unset http_proxy
@@ -111,7 +111,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1647610877
+export SOURCE_DATE_EPOCH=1650015315
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -127,7 +127,7 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1647610877
+export SOURCE_DATE_EPOCH=1650015315
 rm -rf %{buildroot}
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
@@ -140,7 +140,6 @@ export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=16 "
 pushd clr-build
 %make_install
 popd
-## start %find_lang macro
 ## Remove excluded files
 rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/Makefile
 
@@ -542,8 +541,8 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/ideskui/build/index.html
 /usr/lib64/insync/ideskui/build/static/css/main.d1c363b2.chunk.css
 /usr/lib64/insync/ideskui/build/static/css/main.d1c363b2.chunk.css.map
-/usr/lib64/insync/ideskui/build/static/js/0.a115ddd3.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/0.a115ddd3.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/0.7cbe3275.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/0.7cbe3275.chunk.js.map
 /usr/lib64/insync/ideskui/build/static/js/1.3f5ef65f.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/1.3f5ef65f.chunk.js.LICENSE.txt
 /usr/lib64/insync/ideskui/build/static/js/1.3f5ef65f.chunk.js.map
@@ -553,12 +552,12 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/ideskui/build/static/js/5.c02247ed.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/5.c02247ed.chunk.js.LICENSE.txt
 /usr/lib64/insync/ideskui/build/static/js/5.c02247ed.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/6.589bb055.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/6.589bb055.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/main.3e52e185.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/main.3e52e185.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.bbe4004d.js
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.bbe4004d.js.map
+/usr/lib64/insync/ideskui/build/static/js/6.de14aa37.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/6.de14aa37.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/main.bbbc99bd.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/main.bbbc99bd.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.d8ded59d.js
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.d8ded59d.js.map
 /usr/lib64/insync/ideskui/build/static/media/Lato-Black.e5c10b5f.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Bold.401bd636.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Light.bd895b1e.ttf
@@ -650,6 +649,7 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libXrender.so.1
 /usr/lib64/insync/libXtst.so.6
 /usr/lib64/insync/libasound.so.2
+/usr/lib64/insync/libasyncns.so.0
 /usr/lib64/insync/libatk-1.0.so.0
 /usr/lib64/insync/libatk-bridge-2.0.so.0
 /usr/lib64/insync/libatspi.so.0
@@ -688,6 +688,7 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libgobject-2.0.so.0
 /usr/lib64/insync/libgpg-error.so.0
 /usr/lib64/insync/libgraphite2.so.3
+/usr/lib64/insync/libgsm.so.1
 /usr/lib64/insync/libgssapi_krb5.so.2
 /usr/lib64/insync/libgthread-2.0.so.0
 /usr/lib64/insync/libgtk-3.so.0
@@ -711,6 +712,8 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libmount.so.1
 /usr/lib64/insync/libnettle.so.8
 /usr/lib64/insync/libnspr4.so
+/usr/lib64/insync/libogg.so.0
+/usr/lib64/insync/libopus.so.0
 /usr/lib64/insync/libp11-kit.so.0
 /usr/lib64/insync/libpanelw.so.6
 /usr/lib64/insync/libpango-1.0.so.0
@@ -721,12 +724,14 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libpixman-1.so.0
 /usr/lib64/insync/libplc4.so
 /usr/lib64/insync/libplds4.so
+/usr/lib64/insync/libpulsecommon-15.0.so
 /usr/lib64/insync/libpyside2.abi3.so.5.12
 /usr/lib64/insync/libpython3.7m.so.1.0
 /usr/lib64/insync/libreadline.so.8
 /usr/lib64/insync/libselinux.so.1
 /usr/lib64/insync/libshiboken2.abi3.so.5.12
 /usr/lib64/insync/libsmime3.so
+/usr/lib64/insync/libsndfile.so.1
 /usr/lib64/insync/libsqlite3.so.0
 /usr/lib64/insync/libssl.so.1.1
 /usr/lib64/insync/libstdc++.so.6
