@@ -49,7 +49,7 @@ def main():
         linux_releases_js_version_list = linux_releases_js_re.findall(linux_releases_js)
         #print(linux_releases_js_version_list)
         last_version = linux_releases_js_version_list[0]
-        found_url = f"https://d2t3ff60b2tol4.cloudfront.net/builds/insync-{last_version}-fc35.x86_64.rpm"
+        found_url = f"https://d2t3ff60b2tol4.cloudfront.net/builds/insync-{last_version}-fc36.x86_64.rpm"
         filename = f"{cwd}/{os.path.basename(found_url)}"
 
         #print(f"Last version: {last_version}")

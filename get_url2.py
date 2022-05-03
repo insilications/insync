@@ -66,7 +66,7 @@ def main():
             get_url_fc_rpm_match = get_url_fc_rpm_re.search(link.get('href'))
             if get_url_fc_rpm_match:
                 #print(get_url_fc_rpm_match.group(0))
-                found_url = re.sub(get_urlfc_rpm_replace_re, "fc35", get_url_fc_rpm_match.group(0))
+                found_url = re.sub(get_urlfc_rpm_replace_re, "fc36", get_url_fc_rpm_match.group(0))
 
         get_version_from_filename_re = re.compile(r"(?:insync-)((?:\d+)(?:[-._]*\d+)*)(?:-fc\d{2}\.x86_64\.rpm)")
         file_version = ""
