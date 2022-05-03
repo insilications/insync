@@ -42,19 +42,19 @@
 # 	fi
 
 preautospec-checks:
-	$(eval export NEWURL:=$(shell python get_url.py))
+	$(eval export NEWURL:=$(shell python get_url2.py))
 	@-rm CMakeLists.txt
 	@-rm -rf usr/
 	@-rm insync-*.rpm
 
 preautospecnew-checks:
-	$(eval export NEWURL:=$(shell python get_url.py))
+	$(eval export NEWURL:=$(shell python get_url2.py))
 	@-rm CMakeLists.txt
 	@-rm -rf usr/
 	@-rm insync-*.rpm
 
 prebuild-checks:
-	$(eval export NEWURL:=$(shell python get_url.py))
+	$(eval export NEWURL:=$(shell python get_url2.py))
 	@-rm CMakeLists.txt
 	@-rm -rf usr/
 	@-rm insync-*.rpm
