@@ -1,5 +1,6 @@
 ld-linux-x86-64.so.2
 libEGL.so.1
+libFLAC.so.8
 libGL.so.1
 libQt5VirtualKeyboard.so.5
 libX11-xcb.so.1
@@ -18,6 +19,8 @@ libresolv.so.2
 librt.so.1
 libthai.so.0
 libtinfo.so.6
+libvorbis.so.0
+libvorbisenc.so.2
 libxcb-glx.so.0
 libxcb-render.so.0
 libxcb-shm.so.0

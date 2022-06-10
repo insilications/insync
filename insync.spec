@@ -4,10 +4,10 @@
 #
 %define keepstatic 1
 Name     : insync
-Version  : 3.7.6.50356
-Release  : 76
-URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.7.6.50356.tar.gz
-Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.7.6.50356.tar.gz
+Version  : 3.7.7.50360
+Release  : 77
+URL      : file:///aot/build/clearlinux/packages/insync/insync-v3.7.7.50360.tar.gz
+Source0  : file:///aot/build/clearlinux/packages/insync/insync-v3.7.7.50360.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -41,6 +41,8 @@ BuildRequires : zlib-dev
 %undefine _missing_build_ids_terminate_build
 # Disable automatic requeriments processing
 AutoReq: no
+# Disable automatic provides processing
+AutoProv: no
 
 %description
 No detailed description available
@@ -52,6 +54,8 @@ Requires: insync-data = %{version}-%{release}
 Requires: insync-libexec = %{version}-%{release}
 # Disable automatic requeriments processing
 AutoReq: no
+# Disable automatic provides processing
+AutoProv: no
 
 %description bin
 bin components for the insync package.
@@ -62,6 +66,8 @@ Summary: data components for the insync package.
 Group: Data
 # Disable automatic requeriments processing
 AutoReq: no
+# Disable automatic provides processing
+AutoProv: no
 
 %description data
 data components for the insync package.
@@ -76,6 +82,8 @@ Provides: insync-devel = %{version}-%{release}
 Requires: insync = %{version}-%{release}
 # Disable automatic requeriments processing
 AutoReq: no
+# Disable automatic provides processing
+AutoProv: no
 
 %description dev
 dev components for the insync package.
@@ -86,6 +94,8 @@ Summary: libexec components for the insync package.
 Group: Default
 # Disable automatic requeriments processing
 AutoReq: no
+# Disable automatic provides processing
+AutoProv: no
 
 %description libexec
 libexec components for the insync package.
@@ -96,14 +106,16 @@ Summary: man components for the insync package.
 Group: Default
 # Disable automatic requeriments processing
 AutoReq: no
+# Disable automatic provides processing
+AutoProv: no
 
 %description man
 man components for the insync package.
 
 
 %prep
-%setup -q -c -n insync-v3.7.6.50356.tar
-cd %{_builddir}/insync-v3.7.6.50356.tar
+%setup -q -c -n insync-v3.7.7.50360.tar
+cd %{_builddir}/insync-v3.7.7.50360.tar
 
 %build
 unset http_proxy
@@ -111,10 +123,9 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1651555839
+export SOURCE_DATE_EPOCH=1654850537
 mkdir -p clr-build
 pushd clr-build
-export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -127,9 +138,8 @@ make  %{?_smp_mflags}    V=1 VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1651555839
+export SOURCE_DATE_EPOCH=1654850537
 rm -rf %{buildroot}
-export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -552,23 +562,23 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/ideskui/build/static/js/5.c02247ed.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/5.c02247ed.chunk.js.LICENSE.txt
 /usr/lib64/insync/ideskui/build/static/js/5.c02247ed.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/6.472b0a5e.chunk.js
-/usr/lib64/insync/ideskui/build/static/js/6.472b0a5e.chunk.js.map
+/usr/lib64/insync/ideskui/build/static/js/6.e15443b4.chunk.js
+/usr/lib64/insync/ideskui/build/static/js/6.e15443b4.chunk.js.map
 /usr/lib64/insync/ideskui/build/static/js/main.bbbc99bd.chunk.js
 /usr/lib64/insync/ideskui/build/static/js/main.bbbc99bd.chunk.js.map
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.e4effc75.js
-/usr/lib64/insync/ideskui/build/static/js/runtime-main.e4effc75.js.map
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.9504fa17.js
+/usr/lib64/insync/ideskui/build/static/js/runtime-main.9504fa17.js.map
 /usr/lib64/insync/ideskui/build/static/media/Lato-Black.e5c10b5f.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Bold.401bd636.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Light.bd895b1e.ttf
 /usr/lib64/insync/ideskui/build/static/media/Lato-Regular.79164ee5.ttf
 /usr/lib64/insync/ideskui/build/static/media/od-avatar.e64639c8.png
-/usr/lib64/insync/importlib_metadata-4.11.3-py3.7.egg-info/INSTALLER
-/usr/lib64/insync/importlib_metadata-4.11.3-py3.7.egg-info/LICENSE
-/usr/lib64/insync/importlib_metadata-4.11.3-py3.7.egg-info/METADATA
-/usr/lib64/insync/importlib_metadata-4.11.3-py3.7.egg-info/RECORD
-/usr/lib64/insync/importlib_metadata-4.11.3-py3.7.egg-info/WHEEL
-/usr/lib64/insync/importlib_metadata-4.11.3-py3.7.egg-info/top_level.txt
+/usr/lib64/insync/importlib_metadata-4.11.4-py3.7.egg-info/INSTALLER
+/usr/lib64/insync/importlib_metadata-4.11.4-py3.7.egg-info/LICENSE
+/usr/lib64/insync/importlib_metadata-4.11.4-py3.7.egg-info/METADATA
+/usr/lib64/insync/importlib_metadata-4.11.4-py3.7.egg-info/RECORD
+/usr/lib64/insync/importlib_metadata-4.11.4-py3.7.egg-info/WHEEL
+/usr/lib64/insync/importlib_metadata-4.11.4-py3.7.egg-info/top_level.txt
 /usr/lib64/insync/insync
 /usr/lib64/insync/lib-dynload/_asyncio.cpython-37m-x86_64-linux-gnu.so
 /usr/lib64/insync/lib-dynload/_bisect.cpython-37m-x86_64-linux-gnu.so
@@ -656,6 +666,7 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libXrender.so.1
 /usr/lib64/insync/libXtst.so.6
 /usr/lib64/insync/libasound.so.2
+/usr/lib64/insync/libasyncns.so.0
 /usr/lib64/insync/libatk-1.0.so.0
 /usr/lib64/insync/libatk-bridge-2.0.so.0
 /usr/lib64/insync/libatspi.so.0
@@ -693,6 +704,7 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libgobject-2.0.so.0
 /usr/lib64/insync/libgpg-error.so.0
 /usr/lib64/insync/libgraphite2.so.3
+/usr/lib64/insync/libgsm.so.1
 /usr/lib64/insync/libgthread-2.0.so.0
 /usr/lib64/insync/libgtk-3.so.0
 /usr/lib64/insync/libharfbuzz.so.0
@@ -711,6 +723,8 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libmount.so.1
 /usr/lib64/insync/libnettle.so.8
 /usr/lib64/insync/libnspr4.so
+/usr/lib64/insync/libogg.so.0
+/usr/lib64/insync/libopus.so.0
 /usr/lib64/insync/libp11-kit.so.0
 /usr/lib64/insync/libpanelw.so.6
 /usr/lib64/insync/libpango-1.0.so.0
@@ -721,12 +735,14 @@ rm -f %{buildroot}*/usr/lib64/insync/lib/python3.7/config-3.7m-x86_64-linux-gnu/
 /usr/lib64/insync/libpixman-1.so.0
 /usr/lib64/insync/libplc4.so
 /usr/lib64/insync/libplds4.so
+/usr/lib64/insync/libpulsecommon-15.0.so
 /usr/lib64/insync/libpyside2.abi3.so.5.12
 /usr/lib64/insync/libpython3.7m.so.1.0
 /usr/lib64/insync/libreadline.so.8
 /usr/lib64/insync/libselinux.so.1
 /usr/lib64/insync/libshiboken2.abi3.so.5.12
 /usr/lib64/insync/libsmime3.so
+/usr/lib64/insync/libsndfile.so.1
 /usr/lib64/insync/libsqlite3.so.0
 /usr/lib64/insync/libssl.so.3
 /usr/lib64/insync/libstdc++.so.6

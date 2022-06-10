@@ -1,5 +1,5 @@
 PKG_NAME := insync
-URL = file:///aot/build/clearlinux/packages/insync/insync-v3.7.6.50356.tar.gz
+URL = file:///aot/build/clearlinux/packages/insync/insync-v3.7.7.50360.tar.gz
 ARCHIVES = 
 ARCHIVES_GIT = 
 FG = 
